@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :articles
 
   namespace :admin do
-    root "articles#index"
-    resources :articles
+    root "categories#index"
+    resources :users
+    resources :categories 
   end
 
   resources :users
