@@ -1,0 +1,47 @@
+
+<h1>Site Name</h1>
+
+<table >
+  <thead>
+    <tr>
+      <th>
+        Replies_count
+      </th>
+      <th>
+        title
+      </th>
+      <th>
+        Last replied_at
+      </th>
+      <th>
+        View_count
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+      <% @articles.each do |a| %>
+      <tr> 
+        <td>
+          <%= a.replies_count %>
+        </td>
+        <td>
+          <%= a.title %>
+        </td>
+        <td>
+          2018-03-11
+        </td>
+        <td>
+          <%= a.viewed_count %>
+        </td>
+      </tr>  
+      <% end %>
+     
+   
+      
+    
+  </tbody>
+</table>
+
+
