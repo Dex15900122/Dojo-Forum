@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :categories 
   end
 
-  resources :users
+   resources :users, only: [:show, :edit, :update]
 
 
 
