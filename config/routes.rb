@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   resources :articles
 
+  namespace :admin do
+    root "articles#index"
+    resources :articles
+  end
+
+  resources :users
+
 
 
 

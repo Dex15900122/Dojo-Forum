@@ -9,8 +9,10 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light" style="background-color: #8C0044;">
-    </nav>
+    <%= render "shared/application_nav" %>
+    
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
