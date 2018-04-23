@@ -1,0 +1,25 @@
+<%= form_for @article  do |f| %>
+  
+
+  
+  <%= f.text_field :title ,placeholder: 'Title' %><br>
+
+  <%= f.text_field :content %><br>
+
+  <%= f.filestack_field :image, 'File' %><br>
+
+  <%= f.label :status, "Who can see" %>
+    <%= f.radio_button :status, 0 %><%= f.label :status, 'ALL' %>
+    <%= f.radio_button :status, 1  %> <%= f.label :status, 'Friend' %>
+    <%= f.radio_button :status, 2  %> <%= f.label :status, 'Myself' %><br>
+
+  <%  Category.all.each do |category| %>
+  
+    <%= check_box_tag "article[category_ids][]", category.id ,@article.category_ids.include?(category.id)%>
+    <%= category.name %>
+  
+  <% end %><br>
+ 
+
+  <%= f.submit %>
+<% end %>
