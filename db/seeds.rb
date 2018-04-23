@@ -2,7 +2,9 @@
   Article.create!(
     title: "Post title",
     replies_count: rand(00..20),
-    viewed_count: rand(00..99)
+    viewed_count: rand(00..99),
+    user_id: 1,
+    content: "wewqew r r43t 545yth  htrht rg refrefrefwedwdewdew 32r2323r23  2r32r23r 2r32r32r r23r32r32r32r32r32r23 r2",
   )
 end
 

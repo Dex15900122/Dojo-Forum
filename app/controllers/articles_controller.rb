@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @user = User.find_by(id: @article.user_id)
+    @comment = Comment.new
   end
 
   def new
@@ -18,7 +20,7 @@ class ArticlesController < ApplicationController
 
   def create 
     @article = Article.new(article_params)
-
+    @article.user_id = current_user.id
   
     if @article.save
       redirect_to root_path
@@ -26,6 +28,22 @@ class ArticlesController < ApplicationController
       render :new
     end
 
+  end
+
+  def edit
+  end
+
+  def update
+    if @article.update(article_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @article.dertroy
+    redirect_to root_path
   end
 
 

@@ -1,2 +1,55 @@
-<p class="article-show-title "> <%= @article.title %></p> 
-<%= @article.content %>
+<div class="article-show-title "> 
+  <%= @article.title %>
+</div> 
+
+<table class=" table4_4">
+  <tr>
+    <td >
+      <div  class="show-user">
+        <%= filestack_image @user.avatar , transform: filestack_transform.resize(width:100, height:100) %></br>
+        <h4><%= @user.name %></h4>
+      </div>  
+    </td>
+
+
+    <td >
+      <div class="show-user-block">
+        <%= filestack_image @article.image , transform: filestack_transform.resize(width:400, height:400) %></br>
+        <%= @article.content%>
+      </div>
+      
+
+    </td>
+  </tr>
+  <tr >
+    <% @article.comments.each do |comment| %>
+      <td>
+        <div  class="show-user">
+          <%= filestack_image comment.user.avatar , transform: filestack_transform.resize(width:100, height:100) %></br>
+          <h4><%= comment.user.name %></h4>
+        </div>
+      </td>
+      <td>
+        <div class="show-user-block">
+          <h3><%=  comment.content %></h3>
+        </div>
+      </td>
+      
+      <% end %>
+  </tr>
+</table>
+
+</br>
+<div class="container">
+  <div class="row">
+   <%= form_for [@article, @comment] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+  </div>
+</div>
