@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     resources :categories 
   end
 
-   resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :mypost
+      get :mycomment
+    end
+  end
 
 
 

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
  
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :mypost,:mycomment]
 
   def show
   end
@@ -15,6 +15,15 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     redirect_to user_path(@user)
+  end
+
+  def mypost
+    @articles = Article.where( :user_id => @user.id).page(params[:page]).per(10)
+  end
+
+  def mycomment
+    @comments = Comment.where( :user_id => @user.id).page(params[:page]).per(10)
+    
   end
 
   private

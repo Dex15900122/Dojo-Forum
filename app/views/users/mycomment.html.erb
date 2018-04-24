@@ -37,10 +37,10 @@
      <!-- 使用 Bootstrap components 的 Nav Tabs -->
      <!-- https://getbootstrap.com/docs/3.3/components/#nav-tabs -->
      <ul class="nav nav-tabs">
-       <li role="presentation" class="active">
+       <li role="presentation" >
          <%= link_to 'My post', mypost_user_path(current_user.id) %>
        </li>
-       <li role="presentation" >
+       <li role="presentation" class="active">
          <%= link_to 'My comment', mycomment_user_path(current_user.id) %>
        </li>
        
@@ -48,3 +48,43 @@
  
    </div>
  </div>
+
+
+
+<div class="container">
+  <div class="row">
+
+
+
+      
+
+
+    <div class= "article-index-container">
+      <table class="table table-striped table-hover ">
+        
+        <tbody>
+          
+            <% @comments.each do |a| %>
+            <tr> 
+              
+              <td>
+                  <%= a.article.title %></br>
+                  <div class="form-comment"><%= a.content %></div>
+              </td>
+              
+            </tr>  
+            <% end %>
+           
+         
+            
+          
+        </tbody>
+      </table>
+      </br>
+     
+    </div>
+    
+    <%= paginate @comments %>
+      
+  </div>
+</div>
