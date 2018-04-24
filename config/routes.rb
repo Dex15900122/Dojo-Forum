@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments, only: [:create, :destroy]
   end
-
+  resources :categories
+  
   namespace :admin do
     root "categories#index"
     resources :users
