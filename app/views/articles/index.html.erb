@@ -43,7 +43,7 @@
             <% @articles.each do |a| %>
             <tr> 
               <td>
-                <%= a.replies_count %>
+                <%=  Comment.where( :article_id => a.id ).size %>
               </td>
               <td>
                 <%= link_to(a) do %>
@@ -51,10 +51,10 @@
                 <% end %>
               </td>
               <td>
-                2018-03-11
+                <%= a.created_at %>
               </td>
               <td>
-                <%= a.viewed_count %>
+                <%= a.impressionist_count %>
               </td>
             </tr>  
             <% end %>

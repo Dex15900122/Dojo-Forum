@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
  
-  before_action :set_user, only: [:show, :edit, :update, :mypost,:mycomment]
+  before_action :set_user, only: [:show, :edit, :update, :mypost,:mycomment, :mycollect]
 
   def show
   end
@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     @comments = Comment.where( :user_id => @user.id).page(params[:page]).per(10)
     
   end
+
+  def mycollect
+    @collects = Favorite.where( :user_id => @user.id).page(params[:page]).per(10)
+  end
+
 
   private
 

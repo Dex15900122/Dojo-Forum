@@ -1,5 +1,7 @@
 <div class="article-show-title "> 
   <%= @article.title %>
+  <%= render partial: "shared/favorite", locals: {article: @article} %>
+  
 </div> 
 
 <table class=" table4_4">
@@ -21,8 +23,9 @@
 
     </td>
   </tr>
-  <tr >
-    <% @article.comments.each do |comment| %>
+  
+    <% @comments.each do |comment| %>
+      <tr >
       <td>
         <div  class="show-user">
           <%= filestack_image comment.user.avatar , transform: filestack_transform.resize(width:100, height:100) %></br>
@@ -34,9 +37,10 @@
           <h3><%=  comment.content %></h3>
         </div>
       </td>
-      
+      </tr>
+      <%= paginate @comments %>
       <% end %>
-  </tr>
+  
 </table>
 
 </br>

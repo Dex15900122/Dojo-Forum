@@ -1,0 +1,3 @@
+$(".favorite_btn").html("<%=j render :partial => 'shared/favorite' %>")
+
+$("#favorite_btn_<%= @article.id %>").remove()

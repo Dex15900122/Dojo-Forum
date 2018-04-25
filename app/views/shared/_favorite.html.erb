@@ -1,0 +1,7 @@
+<div class="favorite_btn">
+  <% if @article.is_favorited?(current_user) %>
+    <%= link_to 'UnCollect', unfavorite_article_path(@article), method: :post, class: "btn btn-info", remote: true %>
+  <% else %>
+    <%= link_to 'Collect', favorite_article_path(@article), method: :post, class: "btn btn-primary", remote: true %>
+  <% end %>
+</div>

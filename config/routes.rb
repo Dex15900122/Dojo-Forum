@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   resources :articles do
     resources :comments, only: [:create, :destroy]
+    member do
+      post :favorite
+      post :unfavorite
+    end
   end
   resources :categories
   
@@ -18,6 +22,7 @@ Rails.application.routes.draw do
     member do
       get :mypost
       get :mycomment
+      get :mycollect
     end
   end
 
